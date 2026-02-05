@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HARAS PROJETO - Visualizador 3D (AR)</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    html,body{height:100%;margin:0;background:#121212;color:#fff;font-family:Inter,Arial,Helvetica,sans-serif}
+    .viewer-wrap{display:flex;flex-direction:column;height:100vh;}
+    header{padding:12px 16px;display:flex;align-items:center;gap:12px;background:#0f0f0f;box-shadow:0 1px 0 rgba(255,255,255,0.02)}
+    header h1{font-size:16px;margin:0}
+    model-viewer{flex:1;display:block;width:100%;height:calc(100vh - 72px);background:#222}
+    .footer{padding:10px 14px;text-align:left;font-size:13px;background:#0b0b0b;border-top:1px solid rgba(255,255,255,0.03)}
+    .instructions{font-size:14px;opacity:0.9}
+    a.small{color:#9ecfff;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="viewer-wrap">
+    <header>
+      <h1>HARAS PROJETO — Visualizador 3D + AR</h1>
+    </header>
+
+    <model-viewer id="mv" src="model.glb"
+                  alt="HARAS PROJETO - Modelo 3D"
+                  camera-controls
+                  interaction-prompt
+                  exposure="1"
+                  loading="eager"
+                  ar
+                  ar-modes="webxr scene-viewer quick-look"
+                  ios-src="model.usdz"
+                  style="width:100%;height:100%;">
+    </model-viewer>
+
+    <div class="footer">
+      <div class="instructions">
+        Use um dedo para girar e dois dedos para dar zoom. <strong>AR:</strong> Android (Scene Viewer / WebXR) disponível automaticamente. iOS Quick Look exige um arquivo <code>.usdz</code> (veja README).
+      </div>
+    </div>
+  </div>
+</body>
+</html>
