@@ -2,9 +2,9 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <title>Visualizar modelo 3D</title>
+    <title>Modelo 3D com AR</title>
 
-    <!-- model-viewer via CDN -->
+    <!-- model-viewer -->
     <script type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
     </script>
@@ -28,27 +28,55 @@
         padding: 1rem;
         text-align: center;
         font-size: 0.95rem;
+        max-width: 600px;
+      }
+      /* Estilo básico do botão de AR (slot="ar-button") */
+      .ar-button {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.7rem 1.4rem;
+        border: none;
+        border-radius: 999px;
+        background: #fff;
+        color: #111;
+        font-weight: 600;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
     <model-viewer
-      src="modelo.glb"
+      src="modelo.glb"          <!-- troque pelo nome do seu arquivo -->
       camera-controls
       auto-rotate
       autoplay
+
+      ar                         <!-- ativa AR -->
+      ar-modes="webxr scene-viewer quick-look fallback"
+      ar-scale="fixed"           <!-- mantém escala realista no AR -->
+
       touch-action="pan-y"
       interaction-policy="always-allow"
       interaction-prompt="auto"
       interaction-prompt-style="wiggle"
+
       shadow-intensity="1"
       exposure="1"
       environment-image="neutral"
-      alt="Modelo 3D interativo">
+      alt="Modelo 3D interativo com AR">
+
+      <!-- Botão customizado de AR -->
+      <button slot="ar-button" class="ar-button">
+        Ver em AR
+      </button>
     </model-viewer>
 
     <div class="help">
-      Use um dedo para girar o modelo, dois dedos para dar zoom (pinça) e arraste com dois dedos para mover a visão.
+      Use um dedo para girar o modelo, faça o gesto de pinça com dois dedos para dar zoom
+      e arraste com dois dedos para mover a visão. Em celulares compatíveis, toque no
+      botão “Ver em AR” para visualizar o modelo em realidade aumentada no ambiente real.
     </div>
   </body>
 </html>
