@@ -1,44 +1,54 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STAGE LED - 3D (AR)</title>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-    html,body{height:100%;margin:0;background:#121212;color:#fff;font-family:Inter,Arial,Helvetica,sans-serif}
-    .viewer-wrap{display:flex;flex-direction:column;height:100vh;}
-    header{padding:12px 16px;display:flex;align-items:center;gap:12px;background:#0f0f0f;box-shadow:0 1px 0 rgba(255,255,255,0.02)}
-    header h1{font-size:16px;margin:0}
-    model-viewer{flex:1;display:block;width:100%;height:calc(100vh - 72px);background:#222}
-    .footer{padding:10px 14px;text-align:left;font-size:13px;background:#0b0b0b;border-top:1px solid rgba(255,255,255,0.03)}
-    .instructions{font-size:14px;opacity:0.9}
-    a.small{color:#9ecfff;text-decoration:none}
-  </style>
-</head>
-<body>
-  <div class="viewer-wrap">
-    <header>
-      <h1>HARAS PROJETO — Visualizador 3D + AR</h1>
-    </header>
+  <head>
+    <meta charset="utf-8" />
+    <title>Visualizar modelo 3D</title>
 
-    <model-viewer id="mv" src="model.glb"
-                  alt="STAGE LED - Modelo 3D"
-                  camera-controls
-                  interaction-prompt
-                  exposure="1"
-                  loading="eager"
-                  ar
-                  ar-modes="webxr scene-viewer quick-look"
-                  ios-src="model.usdz"
-                  style="width:100%;height:100%;">
+    <!-- model-viewer via CDN -->
+    <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+
+    <style>
+      body {
+        margin: 0;
+        background: #111;
+        color: #fff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      model-viewer {
+        width: 100vw;
+        height: 70vh;
+        outline: none;
+      }
+      .help {
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <model-viewer
+      src="modelo.glb"
+      camera-controls
+      auto-rotate
+      autoplay
+      touch-action="pan-y"
+      interaction-policy="always-allow"
+      interaction-prompt="auto"
+      interaction-prompt-style="wiggle"
+      shadow-intensity="1"
+      exposure="1"
+      environment-image="neutral"
+      alt="Modelo 3D interativo">
     </model-viewer>
 
-    <div class="footer">
-      <div class="instructions">
-        Use um dedo para girar e dois dedos para dar zoom. <strong>AR:</strong> <code>.usdz</code> (veja README).
-      </div>
+    <div class="help">
+      Use um dedo para girar o modelo, dois dedos para dar zoom (pinça) e arraste com dois dedos para mover a visão.
     </div>
-  </div>
-</body>
+  </body>
 </html>
