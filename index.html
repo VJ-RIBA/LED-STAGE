@@ -2,7 +2,7 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <title>Modelo 3D com AR</title>
+    <title>STAGE LED 3D</title>
 
     <!-- model-viewer -->
     <script type="module"
@@ -30,7 +30,6 @@
         font-size: 0.95rem;
         max-width: 600px;
       }
-      /* Estilo básico do botão de AR (slot="ar-button") */
       .ar-button {
         position: absolute;
         bottom: 16px;
@@ -44,18 +43,21 @@
         font-weight: 600;
         cursor: pointer;
       }
+      .ar-button:active {
+        transform: translateX(-50%) scale(0.97);
+      }
     </style>
   </head>
   <body>
     <model-viewer
-      src="modelo.glb"          <!-- troque pelo nome do seu arquivo -->
+      src="model.glb"
       camera-controls
       auto-rotate
       autoplay
 
-      ar                         <!-- ativa AR -->
+      ar
       ar-modes="webxr scene-viewer quick-look fallback"
-      ar-scale="fixed"           <!-- mantém escala realista no AR -->
+      ar-scale="fixed"
 
       touch-action="pan-y"
       interaction-policy="always-allow"
@@ -65,9 +67,8 @@
       shadow-intensity="1"
       exposure="1"
       environment-image="neutral"
-      alt="Modelo 3D interativo com AR">
+      alt="STAGE LED 3D em visualização interativa e realidade aumentada">
 
-      <!-- Botão customizado de AR -->
       <button slot="ar-button" class="ar-button">
         Ver em AR
       </button>
@@ -75,8 +76,8 @@
 
     <div class="help">
       Use um dedo para girar o modelo, faça o gesto de pinça com dois dedos para dar zoom
-      e arraste com dois dedos para mover a visão. Em celulares compatíveis, toque no
-      botão “Ver em AR” para visualizar o modelo em realidade aumentada no ambiente real.
+      e arraste com dois dedos para mover a visão. Em celulares compatíveis, toque em
+      “Ver em AR” para visualizar o STAGE LED 3D em realidade aumentada no ambiente real.
     </div>
   </body>
 </html>
